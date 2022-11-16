@@ -3,7 +3,7 @@
 <h1>All Restaurants</h1>
 
 <% @restaurants.each do |restaurant| %>
-   <li> <%= restaurant.id %>, <%= restaurant.name %>, <%= restaurant.address %>, <%= restaurant.category %> </li>
+   <li> <%= restaurant.id %>, <strong> <%= restaurant.name %> <strong>, <%= restaurant.address %>, <%= restaurant.category %> </li>
 
 <%= link_to "Show this restaurant", restaurant %>
 <% end %>

@@ -1,4 +1,27 @@
-<h1>Restaurants <%= @restaurant.id %></h1>
-<h2><%= @restaurant.name %></h2>
-<p><%= @restaurant.address %></p>
-<p><%= @restaurant.category %></p>
+<div class="container">
+  <div class="row text-center">
+    <div class="col-md-12">
+      <h1>Restaurants <%= @restaurant.id %></h1>
+      <h2><%= @restaurant.name %></h2>
+      <p><%= @restaurant.address %></p>
+      <p><%= @restaurant.category %></p>
+      <p>
+      <%= link_to "Delete",
+        restaurant_path(@restaurant),
+        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+      %>
+      </p>
+      <p>
+        <div class="col-md-12">
+      <h2 class="mb-3">Trusted Reviews</h2>
+      <%= link_to 'Write a review', new_restaurant_review_path(@restaurant), class: 'btn btn-primary' %>
+      <% @restaurant.reviews.each do |review| %>
+        <blockquote class="blockquote">
+          <p><%= review.content %></p>
+        <footer class="blockquote-footer">Anonymous Reviewer <cite title="Source Title">Yelp Premium</cite></footer>
+        </blockquote>
+      <% end %>
+      </p>
+    </div>
+  </div>
+</div>
