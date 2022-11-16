@@ -1,0 +1,10 @@
+<div class="container">
+<p style="colour:green">
+<h1>All Restaurants</h1>
+
+<% @restaurants.each do |restaurant| %>
+   <li> <%= restaurant.id %>, <%= restaurant.name %>, <%= restaurant.address %>, <%= restaurant.category %> </li>
+
+<%= link_to "Show this restaurant", restaurant %>
+<% end %>
+</div>
