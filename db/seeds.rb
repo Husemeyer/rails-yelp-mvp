@@ -8,8 +8,9 @@
 
 puts "Cleaning database"
 Restaurant.destroy_all
+Review.destroy_all
 
-puts "Creating restaurants"
+puts "Creating restaurants and reviews"
 
 20.times do
   restaurant = Restaurant.create(
@@ -18,23 +19,16 @@ puts "Creating restaurants"
     phone_number: Faker::PhoneNumber,
     category: Faker::Food.ethnic_category
   )
+
+    5.times do
+      review = Review.create(
+        content: Faker::Restaurant.description,
+        rating: rand(1..5),
+        restaurant_id: restaurant.id
+      )
+      puts "Review for restaurant: #{review.id} has been created"
+    end
   puts "Restaurant with id: #{restaurant.id} has been created"
-end
-
-puts "Finished"
-
-puts "Cleaning database"
-Review.destroy_all
-
-puts "Creating reviews"
-
-100.times do
-  review = Review.create(
-    content: Faker::Restaurant.description,
-    rating: rand(1..5),
-    restaurant_id: rand(1..20),
-  )
-  puts "Review for restaurant: #{review.id} has been created"
 end
 
 puts "Finished"
